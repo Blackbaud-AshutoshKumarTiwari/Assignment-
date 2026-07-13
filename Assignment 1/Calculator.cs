@@ -26,6 +26,7 @@ class Calculator
                     HistoryManager.ShowHistory(calculationHistory);
 
                     continueCalculating =
+
                         InputManager.AskToContinue();
 
                     continue;
