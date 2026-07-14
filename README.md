@@ -1,21 +1,92 @@
-# Calculator Console Application Assignment-1
-
-A simple console-based calculator application built with C# (.NET 8).
-
-## 📚 C# Concepts Used
-
-### 1. **Variables**
-
-### 2. **Data Types**
-
-### 3. **Operators**
-
-### 4. **Conditional Statements**
-
-### 5. **Methods**
-
-### 6. **Exception Handling**
-
-### 7. **Classes**
+# Calculator Console Application Assignment-2
+**#WorkFlow**
+Program.cs
+    │
+    ▼
+Calculator.Run()
+    │
+    ▼
+DisplayManager.DisplayMenu()
+    │
+    ▼
+InputManager.ReadOperationChoice()
+    │
+    ▼
+Is Clear History?
+ ┌─────────────Yes─────────────┐
+ │                             ▼
+ │                    HistoryManager
+ │                      ClearHistory()
+ │                             │
+ │                             ▼
+ │                    DisplayManager
+ │                     ShowHistory()
+ │
+ No
+ │
+ ▼
+InputManager.ReadNumber()
+(First Number)
+ │
+ ▼
+InputManager.ReadNumber()
+(Second Number)
+ │
+ ▼
+OperationFactory.CreateOperation()
+ │
+ ▼
+AdditionOperation /
+SubtractionOperation /
+MultiplicationOperation /
+DivisionOperation /
+ModulusOperation
+ │
+ ▼
+Execute()
+ │
+ ▼
+Result Returned
+ │
+ ▼
+DisplayManager.DisplayResult()
+ │
+ ▼
+HistoryManager.AddCalculation()
+ │
+ ▼
+DisplayManager.ShowHistory()
+ │
+ ▼
+InputManager.AskToContinue()
+ │
+ ├── Yes → Back to Menu
+ │
+ └── No
+       │
+       ▼
+FileManager.SaveHistoryToFile()
+       │
+       ▼
+HistoryFileName Constant
+       │
+       ▼
+"calculator_history.txt"
+       │
+       ▼
+File.WriteAllLines(
+    HistoryFileName,
+    calculationHistory)
+       │
+       ▼
+File Created In:
+bin\Debug\net8.0\
+calculator_history.txt
+       │
+       ▼
+DisplayManager.DisplayExitMessage()
+       │
+       ▼
+END
 
 
