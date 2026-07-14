@@ -1,21 +1,148 @@
-# Calculator Console Application Assignment-1
+# Calculator Console Application - Assignment 2
 
-A simple console-based calculator application built with C# (.NET 8).
+## Overview
 
-## 📚 C# Concepts Used
+A C# Console Calculator application developed using Object-Oriented Programming (OOP) principles.
 
-### 1. **Variables**
 
-### 2. **Data Types**
+## OOP Principles Implemented
+Encapsulation
+Abstraction
+Inheritance
+Polymorphism
 
-### 3. **Operators**
+## Project Structure
 
-### 4. **Conditional Statements**
+```text
+Program.cs
+Calculator.cs
+MenuChoice.cs
+InputManager.cs
+DisplayManager.cs
+HistoryManager.cs
+FileManager.cs
+CalculatorOperation.cs
+AdditionOperation.cs
+SubtractionOperation.cs
+MultiplicationOperation.cs
+DivisionOperation.cs
+ModulusOperation.cs
+OperationFactory.cs
+```
 
-### 5. **Methods**
+## Workflow
 
-### 6. **Exception Handling**
+```text
+Program.cs
+│
+└── Main()
+      │
+      ▼
+Creates Calculator Object
+      │
+      ▼
+Calculator.Run()
+      │
+      ▼
+DisplayManager.DisplayWelcomeMessage()
+      │
+      ▼
+Start While Loop
+(continueCalculating = true)
+      │
+      ▼
+DisplayManager.DisplayMenu()
+      │
+      ▼
+InputManager.ReadOperationChoice()
+      │
+      ▼
+Is Choice = ClearHistory?
+      │
+ ┌────┴────┐
+ │         │
+Yes        No
+ │          │
+ ▼          ▼
+HandleClearHistory()   HandleCalculation()
+ │                      │
+ ▼                      ▼
+HistoryManager          InputManager
+ClearHistory()          ReadNumber()
+ │                      (First Number)
+ ▼                      │
+DisplayManager          ▼
+DisplayMessage()        InputManager
+ │                      ReadNumber()
+ ▼                      (Second Number)
+DisplayManager          │
+DisplayHistory()        ▼
+ │                      OperationFactory
+ ▼                      CreateOperation()
+AskToContinue()         │
+                        ▼
+                Create Operation Object
+                        │
+                        ▼
+              AdditionOperation
+              SubtractionOperation
+              MultiplicationOperation
+              DivisionOperation
+              ModulusOperation
+                        │
+                        ▼
+                    Execute()
+                        │
+                        ▼
+                Calculation Result
+                        │
+                        ▼
+                DisplayManager
+                    DisplayResult()
+                        │
+                        ▼
+                HistoryManager
+                  AddCalculation()
+                        │
+                        ▼
+                HistoryManager
+              GetCalculationHistory()
+                        │
+                        ▼
+                DisplayManager
+                  DisplayHistory()
+                        │
+                        ▼
+                AskToContinue()
+                        │
+          ┌─────────────┴─────────────┐
+          │                           │
+         Yes                          No
+          │                           │
+          ▼                           ▼
+     Back to Menu              SaveAndExit()
+                                      │
+                                      ▼
+                            FileManager
+                           SaveHistoryToFile()
+                                      │
+                                      ▼
+                           HistoryFileName
+                       "calculator_history.txt"
+                                      │
+                                      ▼
+                         File.WriteAllLines()
+                                      │
+                                      ▼
+                         calculator_history.txt
+                                      │
+                                      ▼
+                       DisplayManager
+                     DisplayExitMessage()
+                                      │
+                                      ▼
+                                     END
+```
 
-### 7. **Classes**
 
 
