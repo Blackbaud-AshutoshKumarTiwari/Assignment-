@@ -2,7 +2,7 @@
 
 class InputManager
 {
-    public static int ReadOperationChoice()
+    public  int ReadOperationChoice()
     {
         int operationChoice;
 
@@ -19,7 +19,7 @@ class InputManager
         return operationChoice;
     }
 
-    public static double ReadNumber(string inputMessage)
+    public  double ReadNumber(string inputMessage)
     {
         double enteredNumber;
 
@@ -36,7 +36,7 @@ class InputManager
         return enteredNumber;
     }
 
-    public static bool AskToContinue()
+    public  bool AskToContinue()
     {
         Console.WriteLine(
             "\nDo you want to perform another calculation? (y/n)");

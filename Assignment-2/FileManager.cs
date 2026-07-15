@@ -7,7 +7,7 @@ class FileManager
     private const string HistoryFileName =
         "calculator_history.txt";
 
-    public static void SaveHistoryToFile(
+    public void SaveHistoryToFile(
         IReadOnlyList<string> calculationHistory)
     {
         if (calculationHistory.Count == 0)
