@@ -1,24 +1,24 @@
-﻿class AdditionOperation : ICalculatorOperation
+﻿class SubtractionOperation : ICalculatorOperation
 {
     public MenuChoice Choice
     {
-        get { return MenuChoice.Addition; }
+        get { return MenuChoice.Subtraction; }
     }
 
     public string Name
     {
-        get { return "Addition"; }
+        get { return "Subtraction"; }
     }
 
     public char Symbol
     {
-        get { return '+'; }
+        get { return '-'; }
     }
 
     public double Execute(
         double firstNumber,
         double secondNumber)
     {
-        return firstNumber + secondNumber;
+        return firstNumber - secondNumber;
     }
 }

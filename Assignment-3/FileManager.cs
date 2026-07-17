@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 
 class FileManager : IFileManager
@@ -15,20 +14,8 @@ class FileManager : IFileManager
             return;
         }
 
-        try
-        {
-            File.WriteAllLines(
-                HistoryFileName,
-                calculationHistory);
-
-            Console.WriteLine(
-                $"\nHistory saved to {HistoryFileName}");
-        }
-        catch (IOException exception)
-        {
-            Console.WriteLine(
-                "Error while saving history: " +
-                exception.Message);
-        }
+        File.WriteAllLines(
+            HistoryFileName,
+            calculationHistory);
     }
 }

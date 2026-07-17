@@ -1,33 +1,48 @@
 ﻿using System;
+using System.Collections.Generic;
 
 class OperationFactory : IOperationFactory
 {
+    private readonly Dictionary<int, ICalculatorOperation>
+        operations;
+
+    public OperationFactory()
+    {
+        operations =
+            new Dictionary<int, ICalculatorOperation>
+            {
+                {
+                    (int)MenuChoice.Addition,
+                    new AdditionOperation()
+                },
+                {
+                    (int)MenuChoice.Subtraction,
+                    new SubtractionOperation()
+                },
+                {
+                    (int)MenuChoice.Multiplication,
+                    new MultiplicationOperation()
+                },
+                {
+                    (int)MenuChoice.Division,
+                    new DivisionOperation()
+                },
+                {
+                    (int)MenuChoice.Modulus,
+                    new ModulusOperation()
+                }
+            };
+    }
+
     public ICalculatorOperation CreateOperation(
         int operationChoice)
     {
-        switch (operationChoice)
+        if (operations.ContainsKey(operationChoice))
         {
-            case (int)MenuChoice.Addition:
-                return new AdditionOperation();
-
-            case (int)MenuChoice.Subtraction:
-                return new SubtractionOperation();
-
-            case (int)MenuChoice.Multiplication:
-                return new MultiplicationOperation();
-
-            case (int)MenuChoice.Division:
-                return new DivisionOperation();
-
-            case (int)MenuChoice.Modulus:
-                return new ModulusOperation();
-
-            case (int)MenuChoice.Power:
-                return new PowerOperation();
-
-            default:
-                throw new InvalidOperationException(
-                    "Invalid choice. Please select a valid menu option.");
+            return operations[operationChoice];
         }
+
+        throw new InvalidOperationException(
+            "Invalid choice. Please select a valid menu option.");
     }
 }
