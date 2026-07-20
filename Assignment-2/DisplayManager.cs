@@ -3,59 +3,59 @@ using System.Collections.Generic;
 
 class DisplayManager
 {
-    public static void DisplayWelcomeMessage()
+    public void DisplayMessage(string message)
     {
-        Console.WriteLine("=== Calculator ===");
+        Console.WriteLine(message);
     }
 
-    public static void DisplayMenu()
+    public void DisplayWelcomeMessage()
     {
-        Console.WriteLine("\nChoose Operation:");
-        Console.WriteLine($"{(int)MenuChoice.Addition}. Addition");
-        Console.WriteLine($"{(int)MenuChoice.Subtraction}. Subtraction");
-        Console.WriteLine($"{(int)MenuChoice.Multiplication}. Multiplication");
-        Console.WriteLine($"{(int)MenuChoice.Division}. Division");
-        Console.WriteLine($"{(int)MenuChoice.Modulus}. Modulus");
-        Console.WriteLine($"{(int)MenuChoice.ClearHistory}. Clear History");
+        DisplayMessage("=== Calculator ===");
     }
 
-    public static void DisplayResult(string calculationDetails)
+    public void DisplayMenu()
     {
-        Console.WriteLine("\n" + calculationDetails);
+        DisplayMessage("\nChoose Operation:");
+        DisplayMessage($"{(int)MenuChoice.Addition}. Addition");
+        DisplayMessage($"{(int)MenuChoice.Subtraction}. Subtraction");
+        DisplayMessage($"{(int)MenuChoice.Multiplication}. Multiplication");
+        DisplayMessage($"{(int)MenuChoice.Division}. Division");
+        DisplayMessage($"{(int)MenuChoice.Modulus}. Modulus");
+        DisplayMessage($"{(int)MenuChoice.ClearHistory}. Clear History");
     }
 
-    public static void DisplayHistory(
+    public void DisplayResult(string calculationDetails)
+    {
+        DisplayMessage("\n" + calculationDetails);
+    }
+
+    public void DisplayErrorMessage(string errorMessage)
+    {
+        DisplayMessage("\nError: " + errorMessage);
+    }
+
+    public void DisplayExitMessage()
+    {
+        DisplayMessage("\nThank you for using Calculator!");
+    }
+
+    public void DisplayHistory(
         IReadOnlyList<string> calculationHistory)
     {
         if (calculationHistory.Count == 0)
         {
-            Console.WriteLine("\nNo calculations performed.");
+            DisplayMessage("\nNo calculations performed.");
             return;
         }
 
-        Console.WriteLine("\n=== Calculation History ===");
+        DisplayMessage("\n=== Calculation History ===");
 
         for (int historyIndex = 0;
              historyIndex < calculationHistory.Count;
              historyIndex++)
         {
-            Console.WriteLine(
+            DisplayMessage(
                 $"{historyIndex + 1}. {calculationHistory[historyIndex]}");
         }
-    }
-
-    public static void DisplayErrorMessage(string errorMessage)
-    {
-        Console.WriteLine("\nError: " + errorMessage);
-    }
-
-    public static void DisplayMessage(string message)
-    {
-        Console.WriteLine(message);
-    }
-
-    public static void DisplayExitMessage()
-    {
-        Console.WriteLine("\nThank you for using Calculator!");
     }
 }

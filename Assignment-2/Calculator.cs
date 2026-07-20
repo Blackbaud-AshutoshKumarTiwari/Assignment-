@@ -3,30 +3,40 @@ using System.IO;
 
 class Calculator
 {
+    private readonly InputManager inputManager =
+        new InputManager();
+
+    private readonly DisplayManager displayManager =
+        new DisplayManager();
+
+    private readonly FileManager fileManager =
+        new FileManager();
+
     private readonly HistoryManager historyManager =
         new HistoryManager();
-   
+
     public void Run()
     {
         bool continueCalculating = true;
 
-        DisplayManager.DisplayWelcomeMessage();
+        displayManager.DisplayWelcomeMessage();
 
         while (continueCalculating)
         {
             try
             {
-                DisplayManager.DisplayMenu();
+                displayManager.DisplayMenu();
 
                 int operationChoice =
-                    InputManager.ReadOperationChoice();
+                    inputManager.ReadOperationChoice();
 
-                if (operationChoice == (int)MenuChoice.ClearHistory)
+                if (operationChoice ==
+                    (int)MenuChoice.ClearHistory)
                 {
                     HandleClearHistory();
 
                     continueCalculating =
-                        InputManager.AskToContinue();
+                        inputManager.AskToContinue();
 
                     continue;
                 }
@@ -35,51 +45,65 @@ class Calculator
             }
             catch (DivideByZeroException exception)
             {
-                DisplayManager.DisplayErrorMessage(exception.Message);
+                displayManager.DisplayErrorMessage(
+                    exception.Message);
             }
             catch (InvalidOperationException exception)
             {
-                DisplayManager.DisplayErrorMessage(exception.Message);
+                displayManager.DisplayErrorMessage(
+                    exception.Message);
             }
             catch (IOException exception)
             {
-                DisplayManager.DisplayErrorMessage(exception.Message);
+                displayManager.DisplayErrorMessage(
+                    exception.Message);
             }
             catch (Exception)
             {
-                DisplayManager.DisplayErrorMessage(
+                displayManager.DisplayErrorMessage(
                     "An unexpected error occurred.");
             }
 
             continueCalculating =
-                InputManager.AskToContinue();
+                inputManager.AskToContinue();
         }
 
         SaveAndExit();
     }
 
-    private void HandleCalculation(int operationChoice)
+    private void HandleCalculation(
+        int operationChoice)
     {
         double firstNumber =
-            InputManager.ReadNumber("Enter the first number:");
+            inputManager.ReadNumber(
+                "Enter the first number:");
 
         double secondNumber =
-            InputManager.ReadNumber("Enter the second number:");
+            inputManager.ReadNumber(
+                "Enter the second number:");
 
         CalculatorOperation selectedOperation =
-            OperationFactory.CreateOperation(operationChoice);
+            OperationFactory.CreateOperation(
+                operationChoice);
 
         double calculationResult =
-            selectedOperation.Execute(firstNumber, secondNumber);
+            selectedOperation.Execute(
+                firstNumber,
+                secondNumber);
 
         string calculationDetails =
-            $"The result of {firstNumber} {selectedOperation.Symbol} {secondNumber} = {calculationResult}";
+            $"The result of {firstNumber} " +
+            $"{selectedOperation.Symbol} " +
+            $"{secondNumber} = " +
+            $"{calculationResult}";
 
-        DisplayManager.DisplayResult(calculationDetails);
+        displayManager.DisplayResult(
+            calculationDetails);
 
-        historyManager.AddCalculation(calculationDetails);
+        historyManager.AddCalculation(
+            calculationDetails);
 
-        DisplayManager.DisplayHistory(
+        displayManager.DisplayHistory(
             historyManager.GetCalculationHistory());
     }
 
@@ -87,18 +111,18 @@ class Calculator
     {
         historyManager.ClearHistory();
 
-        DisplayManager.DisplayMessage(
+        displayManager.DisplayMessage(
             "\nCalculation history cleared successfully.");
 
-        DisplayManager.DisplayHistory(
+        displayManager.DisplayHistory(
             historyManager.GetCalculationHistory());
     }
 
     private void SaveAndExit()
     {
-        FileManager.SaveHistoryToFile(
+        fileManager.SaveHistoryToFile(
             historyManager.GetCalculationHistory());
 
-        DisplayManager.DisplayExitMessage();
+        displayManager.DisplayExitMessage();
     }
 }
