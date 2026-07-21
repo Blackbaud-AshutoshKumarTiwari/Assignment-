@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-
+//Definr display contract
 interface IDisplayManager
-{
+{ 
+   //ISP-Only dislay fn 
     void DisplayWelcomeMessage();
 
     void DisplayMenu();

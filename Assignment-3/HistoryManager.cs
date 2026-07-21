@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-
+//Store calculation history 
 class HistoryManager : IHistoryManager
-{
+{   //SRP-Only manages history
     private readonly List<string> calculationHistory =
         new List<string>();
 

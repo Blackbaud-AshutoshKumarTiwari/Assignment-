@@ -1,25 +1,25 @@
-﻿class AdditionOperation : ICalculatorOperation
+﻿class MultiplicationOperation : ICalculatorOperation
 {
     public MenuChoice Choice
     {
-        get { return MenuChoice.Addition; }
+        get { return MenuChoice.Multiplication; }
     }
     //OCP-New operation implementation
     //LSP-Can replace ICalculatorOperation
     public string Name
     {
-        get { return "Addition"; }
+        get { return "Multiplication"; }
     }
 
     public char Symbol
     {
-        get { return '+'; }
+        get { return '*'; }
     }
 
     public double Execute(
         double firstNumber,
         double secondNumber)
     {
-        return firstNumber + secondNumber;
+        return firstNumber * secondNumber;
     }
 }

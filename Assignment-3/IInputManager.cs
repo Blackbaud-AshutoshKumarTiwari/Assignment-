@@ -1,6 +1,7 @@
-﻿interface IInputManager
+﻿//Define input contract
+interface IInputManager
 {
-    int ReadOperationChoice();
+    int ReadOperationChoice(); // ISP-Only input-related Method 
 
     double ReadNumber(string inputMessage);
 

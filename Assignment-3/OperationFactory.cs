@@ -1,33 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
 
 class OperationFactory : IOperationFactory
 {
+    //SRP-Only cretaes Operation objects 
+    //OCP-Can be extended with new operation 
+    private readonly Dictionary<int, ICalculatorOperation>
+        operations;
+
+    public OperationFactory(
+        Dictionary<int, ICalculatorOperation> operations)
+    {
+        this.operations = operations;
+    }
+
     public ICalculatorOperation CreateOperation(
         int operationChoice)
     {
-        switch (operationChoice)
+        if (operations.ContainsKey(operationChoice))
         {
-            case (int)MenuChoice.Addition:
-                return new AdditionOperation();
-
-            case (int)MenuChoice.Subtraction:
-                return new SubtractionOperation();
-
-            case (int)MenuChoice.Multiplication:
-                return new MultiplicationOperation();
-
-            case (int)MenuChoice.Division:
-                return new DivisionOperation();
-
-            case (int)MenuChoice.Modulus:
-                return new ModulusOperation();
-
-            case (int)MenuChoice.Power:
-                return new PowerOperation();
-
-            default:
-                throw new InvalidOperationException(
-                    "Invalid choice. Please select a valid menu option.");
+            return operations[operationChoice];
         }
+
+        throw new InvalidOperationException(
+            "Invalid choice. Please select a valid menu option.");
     }
 }

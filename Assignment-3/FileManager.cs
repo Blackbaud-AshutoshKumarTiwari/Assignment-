@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-
+//Save history to file 
 class FileManager : IFileManager
-{
+{   //SRP-Only responsible for file operations
     private const string HistoryFileName =
         "calculator_history.txt";
 
@@ -15,20 +14,8 @@ class FileManager : IFileManager
             return;
         }
 
-        try
-        {
-            File.WriteAllLines(
-                HistoryFileName,
-                calculationHistory);
-
-            Console.WriteLine(
-                $"\nHistory saved to {HistoryFileName}");
-        }
-        catch (IOException exception)
-        {
-            Console.WriteLine(
-                "Error while saving history: " +
-                exception.Message);
-        }
+        File.WriteAllLines(
+            HistoryFileName,
+            calculationHistory);
     }
 }
