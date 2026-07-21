@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-
+//Handle all the console outputs
 class DisplayManager : IDisplayManager
-{
+{    // SRP-Only output responsibility.
     private const string WelcomeMessage =
         "=== SOLID Calculator Application ===";
 

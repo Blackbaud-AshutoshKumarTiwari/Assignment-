@@ -2,10 +2,10 @@
 using System.IO;
 
 class Calculator
-{
+{   //Controls the application workflow.
     private readonly IInputManager inputManager;
     private readonly IDisplayManager displayManager;
-    private readonly IHistoryManager historyManager;
+    private readonly IHistoryManager historyManager;   //DIP - instead of concrete classes.
     private readonly IFileManager fileManager;
     private readonly IOperationFactory operationFactory;
 
@@ -22,6 +22,7 @@ class Calculator
         this.fileManager = fileManager;
         this.operationFactory = operationFactory;
     }
+    //SRP-Calculator only controls workflow.
 
     public void Run()
     {

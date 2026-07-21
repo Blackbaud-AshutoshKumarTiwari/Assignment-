@@ -1,9 +1,10 @@
 ﻿using System;
-
+// Handle user Input
 class InputManager : IInputManager
 {
     public int ReadOperationChoice()
     {
+        //SRP- Only reposible for the input handling  
         int operationChoice;
 
         Console.WriteLine("\nEnter your choice:");

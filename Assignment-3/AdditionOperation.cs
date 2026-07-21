@@ -4,7 +4,8 @@
     {
         get { return MenuChoice.Addition; }
     }
-
+    //OCP-New operation implementation
+    //LSP-Can replace ICalculatorOperation
     public string Name
     {
         get { return "Addition"; }

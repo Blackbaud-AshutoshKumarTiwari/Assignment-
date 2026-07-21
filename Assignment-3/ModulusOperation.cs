@@ -6,7 +6,8 @@ class ModulusOperation : ICalculatorOperation
     {
         get { return MenuChoice.Modulus; }
     }
-
+    //OCP-New operation implementation
+    //LSP-Can replace ICalculatorOperation
     public string Name
     {
         get { return "Modulus"; }

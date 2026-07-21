@@ -3,35 +3,15 @@ using System.Collections.Generic;
 
 class OperationFactory : IOperationFactory
 {
+    //SRP-Only cretaes Operation objects 
+    //OCP-Can be extended with new operation 
     private readonly Dictionary<int, ICalculatorOperation>
         operations;
 
-    public OperationFactory()
+    public OperationFactory(
+        Dictionary<int, ICalculatorOperation> operations)
     {
-        operations =
-            new Dictionary<int, ICalculatorOperation>
-            {
-                {
-                    (int)MenuChoice.Addition,
-                    new AdditionOperation()
-                },
-                {
-                    (int)MenuChoice.Subtraction,
-                    new SubtractionOperation()
-                },
-                {
-                    (int)MenuChoice.Multiplication,
-                    new MultiplicationOperation()
-                },
-                {
-                    (int)MenuChoice.Division,
-                    new DivisionOperation()
-                },
-                {
-                    (int)MenuChoice.Modulus,
-                    new ModulusOperation()
-                }
-            };
+        this.operations = operations;
     }
 
     public ICalculatorOperation CreateOperation(
