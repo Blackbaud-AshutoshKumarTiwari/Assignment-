@@ -2,7 +2,7 @@
 using System.IO;
 
 class Logger
-{
+{  //Singleton Pattern
     private static Logger? instance;
 
     private const string LogFileName =
