@@ -4,25 +4,34 @@ class Program
 {
     static void Main(string[] args)
     {
-        IInputManager inputManager =
-            new InputManager();
+        // Transient Lifetime-A new object is created every time it is requested
 
-        IDisplayManager displayManager =
-            new DisplayManager();
 
-        IHistoryRepository historyRepository =
-            new FileHistoryRepository();
+        /*These objects are created once when the application starts 
+        and passed to Calculator 
 
-        IOperationFactory operationFactory =
-            new OperationFactory();
+        They are not shared globally like Logger,
+        They are used only for the calculator workflow,
+        If needed, a new instance can be created without affecting other objects*/
+IInputManager inputManager =
+    new InputManager();
 
-        Calculator calculator =
-            new Calculator(
-                inputManager,
-                displayManager,
-                historyRepository,
-                operationFactory);
+IDisplayManager displayManager =
+    new DisplayManager();
 
-        calculator.Run();
-    }
+IHistoryRepository historyRepository =
+    new FileHistoryRepository();
+
+IOperationFactory operationFactory =
+    new OperationFactory();
+
+Calculator calculator =
+    new Calculator(
+        inputManager,
+        displayManager,
+        historyRepository,
+        operationFactory);
+
+calculator.Run();
+}
 }
